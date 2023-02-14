@@ -110,7 +110,7 @@ namespace 調劑台管理系統
         bool flag_人員資料_權限管理_頁面更新 = false;
         private void sub_Program_人員資料()
         {
-            if (this.plC_ScreenPage_Main.PageText == "人員資料" && this.plC_ScreenPage_人員資料.PageText == "資料維護")
+            if (this.plC_ScreenPage_Main.PageText == "人員資料" && this.plC_ScreenPage_人員資料.PageText == "資料建置")
             {
                 if (!this.flag_人員資料_資料維護_頁面更新)
                 {
@@ -526,9 +526,9 @@ namespace 調劑台管理系統
             for (int i = 0; i < this.sqL_DataGridView_人員資料.dataGridView.Rows.Count; i++)
             {
 
-                Color color = this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[index].Value.ObjectToString().ToColor();
-                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[index].Style.BackColor = color;
-                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[index].Style.ForeColor = color;
+                Color color = this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[enum_人員資料.顏色.GetEnumName()].Value.ObjectToString().ToColor();
+                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[enum_人員資料.顏色.GetEnumName()].Style.BackColor = color;
+                this.sqL_DataGridView_人員資料.dataGridView.Rows[i].Cells[enum_人員資料.顏色.GetEnumName()].Style.ForeColor = color;
             }
         }
         private void SqL_DataGridView_人員資料_RowEnterEvent(object[] RowValue)

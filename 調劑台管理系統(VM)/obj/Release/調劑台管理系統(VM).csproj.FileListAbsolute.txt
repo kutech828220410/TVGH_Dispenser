@@ -250,7 +250,6 @@ C:\調劑台管理系統20220922\調劑台管理系統(VM)\bin\Release\System.Te
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\bin\Release\System.Text.Json.xml
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\bin\Release\System.ValueTuple.xml
-C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).csprojAssemblyReference.cache
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統_VM_.Form1.resources
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統_VM_.Properties.Resources.resources
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).csproj.GenerateResource.cache
@@ -258,3 +257,4 @@ C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).csproj.CopyComplete
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).exe
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).pdb
+C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).csproj.AssemblyReference.cache

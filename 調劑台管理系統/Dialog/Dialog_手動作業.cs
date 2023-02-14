@@ -18,6 +18,7 @@ namespace 調劑台管理系統
         藥品碼,
         藥品名稱,
         交易量,
+        備註,
     }
     public partial class Dialog_手動作業 : Form
     {
@@ -122,11 +123,14 @@ namespace 調劑台管理系統
             if (_enum_狀態 == enum_狀態.領藥) 交易量 *= -1;
             string 藥品碼 = list_value[0][(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString();
             string 藥品名稱 = list_value[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
+            string 備註 = textBox_備註內容.Text;
             object[] value = new object[new enum_選擇藥品().GetLength()];
             value[(int)enum_選擇藥品.GUID] = Guid.NewGuid().ToString();
             value[(int)enum_選擇藥品.藥品碼] = 藥品碼;
             value[(int)enum_選擇藥品.藥品名稱] = 藥品名稱;
             value[(int)enum_選擇藥品.交易量] = 交易量;
+            value[(int)enum_選擇藥品.備註] = 備註;
+            this.Invoke(new Action(delegate { textBox_備註內容.Text = ""; }));
             this.sqL_DataGridView_選擇藥品.AddRow(value, true);
         }
         private void RJ_TextBox_藥品資料_藥品名稱_KeyPress(object sender, KeyPressEventArgs e)
@@ -154,7 +158,7 @@ namespace 調劑台管理系統
             myTimer.StartTickTime(50000);
             List<object[]> list_value = this.sqL_DataGridView_藥品資料.SQL_GetAllRows(false);
             Console.Write($"從SQL取得藥品資料,耗時{myTimer.ToString()}ms\n");
-            list_value = list_value.GetRowsByLike((int)enum_藥品資料_藥檔資料.藥品名稱, this.rJ_TextBox_藥品資料_藥品名稱.Texts);
+            list_value = list_value.GetRowsByLike((int)enum_藥品資料_藥檔資料.藥品名稱, this.rJ_TextBox_藥品資料_藥品名稱.Texts, true);
             Console.Write($"搜尋藥品資料,耗時{myTimer.ToString()}ms\n");
             this.sqL_DataGridView_藥品資料.RefreshGrid(list_value);
             Console.Write($"更新藥品資料,耗時{myTimer.ToString()}ms\n");

@@ -759,6 +759,7 @@ namespace 調劑台管理系統
                 string 庫存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
                 boxes[0].效期庫存覆蓋(效期, 批號, 數量);
                 int 修正庫存 = boxes[0].取得庫存();
+                epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(epD_583_Pannel.CurrentDrawer);
                 this.List_EPD583_本地資料.Add_NewDrawer(epD_583_Pannel.CurrentDrawer);
 
@@ -831,7 +832,9 @@ namespace 調劑台管理系統
                 string 庫存量 = this.Function_從SQL取得庫存(藥品碼).ToString();
                 boxes[0].效期庫存覆蓋(效期, 批號, 數量);
                 int 修正庫存 = boxes[0].取得庫存();
+                epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(epD_583_Pannel.CurrentDrawer);
+                this.List_EPD583_本地資料.Add_NewDrawer(epD_583_Pannel.CurrentDrawer);
 
                 string GUID = Guid.NewGuid().ToString();
                 string 動作 = enum_交易記錄查詢動作.效期庫存異動.GetEnumName();
@@ -898,8 +901,9 @@ namespace 調劑台管理系統
                 }
 
                 boxes[0].修正批號(效期, 新批號);
-                this.List_EPD583_本地資料.Add_NewDrawer(epD_583_Pannel.CurrentDrawer);
+                epD_583_Pannel.CurrentDrawer.ReplaceBox(boxes[0]);
                 this.drawerUI_EPD_583.SQL_ReplaceDrawer(epD_583_Pannel.CurrentDrawer);
+                this.List_EPD583_本地資料.Add_NewDrawer(epD_583_Pannel.CurrentDrawer);
 
                 string GUID = Guid.NewGuid().ToString();
                 string 動作 = enum_交易記錄查詢動作.效期庫存異動.GetEnumName();
