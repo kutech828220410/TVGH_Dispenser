@@ -1,0 +1,29 @@
+{
+  "DB_Basic": {
+    "DataBaseName": "DSUD0",
+    "IP": "localhost",
+    "UserName": "user",
+    "Password": "66437068",
+    "Port": 3306,
+    "MySqlSslMode": 0,
+    "TableName": ""
+  },
+  "DB_person_page": {
+    "DataBaseName": "DSUD0",
+    "IP": "localhost",
+    "UserName": "user",
+    "Password": "66437068",
+    "Port": 3306,
+    "MySqlSslMode": 0,
+    "TableName": ""
+  },
+  "DB_order_list": {
+    "DataBaseName": "DSVM",
+    "IP": "10.97.241.193",
+    "UserName": "user",
+    "Password": "66437068",
+    "Port": 3306,
+    "MySqlSslMode": 0,
+    "TableName": ""
+  }
+}
