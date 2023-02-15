@@ -239,13 +239,15 @@ namespace 調劑台管理系統
                 }
             }
         }
-        private string[] Function_藥品群組_取得選單()
+        private string[] Function_藥品群組_取得選單(bool spaceEnable)
         {
             List<string> list_data = new List<string>();
             List<object[]> list_藥品群組 = sqL_DataGridView_藥品群組.SQL_GetAllRows(false);
             list_藥品群組.Sort(new Icp_藥品群組());
-            string 序號 = "";
-            string 名稱 = "";
+            string 序號 = "00";
+            string 名稱 = "預設空白";
+            if(spaceEnable) list_data.Add($"{序號}. {名稱}");
+
             for (int i = 0; i < list_藥品群組.Count; i++)
             {
                 序號 = list_藥品群組[i][(int)enum_藥品群組.群組序號].ObjectToString();
@@ -456,7 +458,7 @@ namespace 調劑台管理系統
         private DialogResult Function_藥品資料_藥檔資料_藥品群組設定()
         {
             DialogResult dialogResult;
-            Dialog_ContextMenuStrip dialog_ContextMenuStrip = new Dialog_ContextMenuStrip(Function_藥品群組_取得選單());
+            Dialog_ContextMenuStrip dialog_ContextMenuStrip = new Dialog_ContextMenuStrip(Function_藥品群組_取得選單(true));
             dialog_ContextMenuStrip.TitleText = "藥品群組設定";
             dialog_ContextMenuStrip.ControlsTextAlign = ContentAlignment.MiddleLeft;
             dialog_ContextMenuStrip.ControlsHeight = 40;
@@ -467,16 +469,27 @@ namespace 調劑台管理系統
                 if (strArray.Length == 2)
                 {
                     int 群組序號 = strArray[0].StringToInt32();
+                    List<object[]> list_value = this.sqL_DataGridView_藥品資料_藥檔資料.Get_All_Select_RowsValues();
                     if (群組序號 >= 1 && 群組序號 <= 20)
                     {
                         List<string[]> list_Replace_SerchValue = new List<string[]>();
                         List<object[]> list_Replace_Value = new List<object[]>();
-                        List<object[]> list_value = this.sqL_DataGridView_藥品資料_藥檔資料.Get_All_Select_RowsValues();
+                       
                         for (int i = 0; i < list_value.Count; i++)
                         {
                             list_value[i][(int)enum_藥品資料_藥檔資料.藥品群組] = 群組序號.ToString("00");
                         }
-                        this.sqL_DataGridView_藥品資料_藥檔資料.SQL_ReplaceExtra(list_value, true);
+                        this.sqL_DataGridView_藥品資料_藥檔資料.SQL_ReplaceExtra(list_value, false);
+                        this.sqL_DataGridView_藥品資料_藥檔資料.ReplaceExtra(list_value, true);
+                    }
+                    else if(群組序號 == 0)
+                    {
+                        for (int i = 0; i < list_value.Count; i++)
+                        {
+                            list_value[i][(int)enum_藥品資料_藥檔資料.藥品群組] = "";
+                        }
+                        this.sqL_DataGridView_藥品資料_藥檔資料.SQL_ReplaceExtra(list_value, false);
+                        this.sqL_DataGridView_藥品資料_藥檔資料.ReplaceExtra(list_value, true);
                     }
                 }
 
@@ -490,7 +503,7 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
-                this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單());
+                this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(false));
             }));
            
         }
@@ -498,7 +511,7 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
-                this.rJ_ComboBox_藥品資料_藥檔資料_資料查詢_藥品群組.SetDataSource(this.Function_藥品群組_取得選單());
+                this.rJ_ComboBox_藥品資料_藥檔資料_資料查詢_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(false));
             }));
            
         }
@@ -621,7 +634,7 @@ namespace 調劑台管理系統
         }
         private void SqL_DataGridView_藥品資料_藥檔資料_RowDoubleClickEvent(object[] RowValue)
         {
-            this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單());
+            this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(false));
             int index = RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString().StringToInt32() - 1;
             Finction_藥品群組_名稱轉序號(RowValue, (int)enum_藥品資料_藥檔資料.藥品群組);
             this.textBox_藥品資料_藥檔資料_藥品碼.Text = RowValue[(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString();

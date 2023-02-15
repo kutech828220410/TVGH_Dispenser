@@ -1002,9 +1002,9 @@ namespace 調劑台管理系統
                     string 藥品碼 = list_value[i][(int)enum_選擇藥品.藥品碼].ObjectToString();
                     list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
                     if (list_藥品資料_buf.Count == 0) continue;
-                    string 藥品名稱 = list_藥品資料[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
+                    string 藥品名稱 = list_藥品資料[i][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
                     string 藥袋序號 = list_value[i][(int)enum_選擇藥品.備註].ObjectToString();
-                    string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
+                    string 單位 = list_藥品資料_buf[i][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
                     string 病歷號 = "";
                     string 病人姓名 = "";
                     string 開方時間 =DateTime.Now.ToDateTimeString_6();
@@ -1905,9 +1905,9 @@ namespace 調劑台管理系統
                     string 藥品碼 = list_value[i][(int)enum_選擇藥品.藥品碼].ObjectToString();
                     list_藥品資料_buf = list_藥品資料.GetRows((int)enum_藥品資料_藥檔資料.藥品碼, 藥品碼);
                     if (list_藥品資料_buf.Count == 0) continue;
-                    string 藥品名稱 = list_藥品資料[0][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
+                    string 藥品名稱 = list_藥品資料[i][(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
                     string 藥袋序號 = list_value[i][(int)enum_選擇藥品.備註].ObjectToString();
-                    string 單位 = list_藥品資料_buf[0][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
+                    string 單位 = list_藥品資料_buf[i][(int)enum_藥品資料_藥檔資料.包裝單位].ObjectToString();
                     string 病歷號 = "";
                     string 病人姓名 = "";
                     string 開方時間 = DateTime.Now.ToDateTimeString_6();
