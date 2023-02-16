@@ -61,7 +61,6 @@ namespace 調劑台管理系統
         包裝單位,
         庫存,
         安全庫存,
-        圖片網址,
         警訊藥品,
     }
     public enum enum_藥品資料_藥檔資料_匯出
@@ -503,7 +502,7 @@ namespace 調劑台管理系統
         {
             this.Invoke(new Action(delegate
             {
-                this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(false));
+                this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(true));
             }));
            
         }
