@@ -633,8 +633,9 @@ namespace 調劑台管理系統
         }
         private void SqL_DataGridView_藥品資料_藥檔資料_RowDoubleClickEvent(object[] RowValue)
         {
-            this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(false));
-            int index = RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString().StringToInt32() - 1;
+            this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(true));
+            int index = RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString().StringToInt32();
+            if (RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString().StringIsEmpty()) index = 0;
             Finction_藥品群組_名稱轉序號(RowValue, (int)enum_藥品資料_藥檔資料.藥品群組);
             this.textBox_藥品資料_藥檔資料_藥品碼.Text = RowValue[(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString();
             this.textBox_藥品資料_藥檔資料_藥品名稱.Text = RowValue[(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
