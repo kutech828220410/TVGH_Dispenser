@@ -205,17 +205,17 @@ namespace 調劑台管理系統
         private void Finction_藥品群組_序號轉名稱(List<object[]> RowsList, int Enum)
         {
             List<object[]> list_藥品群組 = sqL_DataGridView_藥品群組.SQL_GetAllRows(false);
-            List<object[]> list_藥品群組_buf = new List<object[]>();
-            string 群組序號 = "";
-            for (int i = 0; i < RowsList.Count; i++)
+            Parallel.ForEach(RowsList, value =>
             {
-                群組序號 = RowsList[i][Enum].ObjectToString();
-                list_藥品群組_buf = list_藥品群組.GetRows((int)enum_藥品群組.群組序號, 群組序號);
+                string 群組序號 = value[Enum].ObjectToString();
+                List<object[]> list_藥品群組_buf = list_藥品群組.GetRows((int)enum_藥品群組.群組序號, 群組序號);
                 if (list_藥品群組_buf.Count > 0)
                 {
-                    RowsList[i][Enum] = list_藥品群組_buf[0][(int)enum_藥品群組.群組名稱];
+                    value[Enum] = list_藥品群組_buf[0][(int)enum_藥品群組.群組名稱];
                 }
-            }
+            });
+
+      
         }
         private void Finction_藥品群組_名稱轉序號(object[] value, int Enum)
         {
@@ -634,9 +634,11 @@ namespace 調劑台管理系統
         private void SqL_DataGridView_藥品資料_藥檔資料_RowDoubleClickEvent(object[] RowValue)
         {
             this.rJ_ComboBox_藥品資料_藥檔資料_藥品群組.SetDataSource(this.Function_藥品群組_取得選單(true));
-            int index = RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString().StringToInt32();
-            if (RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString().StringIsEmpty()) index = 0;
             Finction_藥品群組_名稱轉序號(RowValue, (int)enum_藥品資料_藥檔資料.藥品群組);
+            string 藥品群組 = RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString();
+            int index = 藥品群組.StringToInt32();
+            if (RowValue[(int)enum_藥品資料_藥檔資料.藥品群組].ObjectToString().StringIsEmpty()) index = 0;
+          
             this.textBox_藥品資料_藥檔資料_藥品碼.Text = RowValue[(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString();
             this.textBox_藥品資料_藥檔資料_藥品名稱.Text = RowValue[(int)enum_藥品資料_藥檔資料.藥品名稱].ObjectToString();
             this.textBox_藥品資料_藥檔資料_藥品學名.Text = RowValue[(int)enum_藥品資料_藥檔資料.藥品學名].ObjectToString();
@@ -651,10 +653,17 @@ namespace 調劑台管理系統
         }
         private void SqL_DataGridView_藥品資料_藥檔資料_DataGridRowsChangeEvent(List<object[]> RowsList)
         {
-            for (int i = 0; i < RowsList.Count; i++)
+
+            Parallel.ForEach(RowsList, value =>
             {
-                RowsList[i][(int)enum_藥品資料_藥檔資料.庫存] = this.Function_從本地資料取得庫存(RowsList[i][(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString()).ToString();
-            }
+                value[(int)enum_藥品資料_藥檔資料.庫存] = this.Function_從本地資料取得庫存(value[(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString()).ToString();
+
+            });
+
+            //for (int i = 0; i < RowsList.Count; i++)
+            //{
+            //    RowsList[i][(int)enum_藥品資料_藥檔資料.庫存] = this.Function_從本地資料取得庫存(RowsList[i][(int)enum_藥品資料_藥檔資料.藥品碼].ObjectToString()).ToString();
+            //}
             Finction_藥品群組_序號轉名稱(RowsList, (int)enum_藥品資料_藥檔資料.藥品群組);
             RowsList.Sort(new Icp_藥品資料_藥檔資料());
         }
