@@ -257,4 +257,4 @@ C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).csproj.CopyComplete
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).exe
 C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).pdb
-C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).csproj.AssemblyReference.cache
+C:\調劑台管理系統20220922\調劑台管理系統(VM)\obj\Release\調劑台管理系統(VM).csprojAssemblyReference.cache

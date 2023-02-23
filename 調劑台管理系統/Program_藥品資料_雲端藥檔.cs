@@ -155,7 +155,7 @@ namespace 調劑台管理系統
                     value[(int)enum_藥品資料_藥檔資料.藥品條碼] = UDSDBBCM[(int)enum_UDSDBBCM.藥品條碼1];
                     value[(int)enum_藥品資料_藥檔資料.安全庫存] = "0";
                     value[(int)enum_藥品資料_藥檔資料.警訊藥品] = false.ToString();
-                    list_藥檔資料_add.LockAdd(value);
+                    //list_藥檔資料_add.LockAdd(value);
                 }
                 else
                 {
